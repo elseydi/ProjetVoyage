@@ -9,6 +9,7 @@ import voyage.model.Reservation;
 public abstract class Client {
 	// ----------- ATTRIBUTS ----------- 
 	private long id;
+	private int version;
 	private String nom;
 	private String numeroTel;
 	private String numeroFax;
@@ -40,7 +41,17 @@ public abstract class Client {
 	public void setId(long id) {
 		this.id = id;
 	}
+	
+	@Version
+	public int getVersion() {
+		return version;
+	}
 
+	public void setVersion(int version) {
+		this.version = version;
+	}
+
+	@Column(length=50)
 	public String getNom() {
 		return nom;
 	}
@@ -49,6 +60,7 @@ public abstract class Client {
 		this.nom = nom;
 	}
 
+	@Column(length=20)
 	public String getNumeroTel() {
 		return numeroTel;
 	}
@@ -57,6 +69,7 @@ public abstract class Client {
 		this.numeroTel = numeroTel;
 	}
 
+	@Column(length=20)
 	public String getNumeroFax() {
 		return numeroFax;
 	}
@@ -65,6 +78,7 @@ public abstract class Client {
 		this.numeroFax = numeroFax;
 	}
 
+	@Column(length=100)
 	public String getEmail() {
 		return email;
 	}
