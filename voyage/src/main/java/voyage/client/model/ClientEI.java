@@ -1,5 +1,6 @@
 package voyage.client.model;
 
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -30,6 +31,8 @@ public class ClientEI extends Client{
 	public void setTitre(TitrePhysique titre) {
 		this.titre = titre;
 	}
+	
+	@Column(length=50)
 	public String getPrenom() {
 		return prenom;
 	}
