@@ -6,6 +6,7 @@ import javax.persistence.*;
 public class Login {
 	// ------------ ATTRIBUTS -------------
 	private long id;
+	private int version;
 	private String login;
 	private String motDePasse;
 	private boolean admin;
@@ -26,6 +27,7 @@ public class Login {
 
 	// ------------ GETTERS & SETTERS -------------
 	@Id
+	@GeneratedValue
 	public long getId() {
 		return id;
 	}
@@ -35,7 +37,16 @@ public class Login {
 		this.id = id;
 	}
 
+	@Version
+	public int getVersion() {
+		return version;
+	}
 
+	public void setVersion(int version) {
+		this.version = version;
+	}
+
+	@Column(length=50)
 	public String getLogin() {
 		return login;
 	}
@@ -46,6 +57,7 @@ public class Login {
 	}
 
 
+	@Column(length=50)
 	public String getMotDePasse() {
 		return motDePasse;
 	}
