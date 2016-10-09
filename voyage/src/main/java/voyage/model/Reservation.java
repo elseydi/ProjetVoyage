@@ -14,6 +14,7 @@ import javax.persistence.Version;
 
 import voyage.client.model.Client;
 import voyage.client.model.Passager;
+import voyage.vol.model.Vol;
 
 @Entity
 public class Reservation {
@@ -24,6 +25,7 @@ public class Reservation {
 	private Passager passager;
 	private int version;
 	private Client client;
+	private Vol vol;
 	
 	public Reservation() {
 		super();
@@ -89,6 +91,15 @@ public class Reservation {
 
 	public void setClient(Client client) {
 		this.client = client;
+	}
+
+	@ManyToOne
+	public Vol getVol() {
+		return vol;
+	}
+
+	public void setVol(Vol vol) {
+		this.vol = vol;
 	}
 	
 	
