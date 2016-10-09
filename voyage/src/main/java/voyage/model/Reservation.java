@@ -29,7 +29,6 @@ public class Reservation {
 	
 	public Reservation() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Reservation(Date date, Integer numero) {
