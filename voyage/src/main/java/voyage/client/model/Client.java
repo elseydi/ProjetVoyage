@@ -6,6 +6,8 @@ import javax.persistence.*;
 import voyage.model.Reservation;
 
 @Entity
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="type", discriminatorType=DiscriminatorType.STRING)
 public abstract class Client {
 	// ----------- ATTRIBUTS ----------- 
 	private long id;
