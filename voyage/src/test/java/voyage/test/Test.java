@@ -79,10 +79,6 @@ public class Test {
 		resa4.setPassager(p2);
 		resa4.setPassager(p3);
 		
-		reservationDao.create(resa1);
-		reservationDao.create(resa2);
-		reservationDao.create(resa3);
-		reservationDao.create(resa4);
 		
 		// Test Clients
 		ClientDao clientDao = new ClientDaoJpa();
@@ -105,22 +101,19 @@ public class Test {
 		
 		// Ajouts sur Clients
 		client1.setLogin(log1);
-		client1.addReservation(resa1);
-		client1.addReservation(resa4);
+//		client1.addReservation(resa1);
+//		client1.addReservation(resa4);
 		client1.setAdresse(new Adresse("RUE DU MORT", "75666", "Paris", "France"));
 		client1 = clientDao.update(client1);
 		
 		client2.setLogin(log2);
 		client2 = clientDao.update(client2);
 		
-		
+		resa1.setClient(client1);
 		resa2.setClient(client2);
-		resa2 = reservationDao.update(resa2);
-		
 		resa3.setClient(client3);
-		resa3 = reservationDao.update(resa3);
-		
-		
+		resa4.setClient(client2);
+
 		// --------- VOL ---------
 
 		AeroportDao aeroportDao = new AeroportDaoJpa();
@@ -241,7 +234,15 @@ public class Test {
 		
 		
 		resa1.setVol(vol1);
-		resa1 = reservationDao.update(resa1);
+		resa2.setVol(vol1);
+		resa3.setVol(vol1);
+		resa4.setVol(vol1);
+		
+		reservationDao.create(resa1);
+		reservationDao.create(resa2);
+		reservationDao.create(resa3);
+		reservationDao.create(resa4);
+		
 		
 		Application.close();
 	}
