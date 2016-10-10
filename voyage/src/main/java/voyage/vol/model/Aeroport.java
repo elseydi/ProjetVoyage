@@ -17,7 +17,7 @@ import javax.persistence.Version;
 @Entity
 public class Aeroport {
 
-	private long idAeroport;
+	private long id;
 	private String nomAeroport;
 	private List<AeroportVille> villes = new ArrayList<AeroportVille>();
 	private List<Vol> voldeparts = new ArrayList<Vol>();
@@ -41,13 +41,13 @@ public class Aeroport {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	public long getIdAeroport() {
-		return idAeroport;
+	public long getId() {
+		return id;
 	}
 
 	
-	public void setIdAeroport(long idAeroport) {
-		this.idAeroport = idAeroport;
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	@Column(length = 100)
