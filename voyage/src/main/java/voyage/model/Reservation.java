@@ -22,9 +22,10 @@ public class Reservation {
 	private Date date;
 	private Integer numero;
 	private Passager passager;
-	private int version;
 	private Client client;
 	private Vol vol;
+	private int version;
+	
 	
 	public Reservation() {
 		super();
@@ -82,8 +83,9 @@ public class Reservation {
 	public void setPassager(Passager passager) {
 		this.passager = passager;
 	}
-
+	
 	@ManyToOne
+	@JoinColumn(name="client_id")
 	public Client getClient() {
 		return client;
 	}
@@ -93,6 +95,7 @@ public class Reservation {
 	}
 
 	@ManyToOne
+	@JoinColumn(name="vol_id", nullable=false)
 	public Vol getVol() {
 		return vol;
 	}
@@ -100,6 +103,11 @@ public class Reservation {
 	public void setVol(Vol vol) {
 		this.vol = vol;
 	}
+
+
+	
+	
+	
 	
 	
 	
