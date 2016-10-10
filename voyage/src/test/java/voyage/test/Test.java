@@ -26,6 +26,10 @@ import voyage.vol.dao.AeroportDao;
 import voyage.vol.dao.AeroportDaoJpa;
 import voyage.vol.dao.AeroportVilleDao;
 import voyage.vol.dao.AeroportVilleDaoJpa;
+import voyage.vol.dao.CompagnieAerienneDao;
+import voyage.vol.dao.CompagnieAerienneDaoJpa;
+import voyage.vol.dao.CompagnieAerienneVolDao;
+import voyage.vol.dao.CompagnieAerienneVolDaoJpa;
 import voyage.vol.dao.EscaleDao;
 import voyage.vol.dao.EscaleDaoJpa;
 import voyage.vol.dao.VilleDao;
@@ -34,6 +38,8 @@ import voyage.vol.dao.VolDao;
 import voyage.vol.dao.VolDaoJpa;
 import voyage.vol.model.Aeroport;
 import voyage.vol.model.AeroportVille;
+import voyage.vol.model.CompagnieAerienne;
+import voyage.vol.model.CompagnieAerienneVol;
 import voyage.vol.model.Escale;
 import voyage.vol.model.Ville;
 import voyage.vol.model.Vol;
@@ -121,6 +127,8 @@ public class Test {
 		VolDao volDao = new VolDaoJpa();
 		EscaleDao escaleDao =new EscaleDaoJpa();
 		AeroportVilleDao aeroportVilleDao = new AeroportVilleDaoJpa();
+		CompagnieAerienneDao compagnieAerienneDao = new CompagnieAerienneDaoJpa();
+		CompagnieAerienneVolDao compagnieAerienneVolDao = new CompagnieAerienneVolDaoJpa();
 		
 		Aeroport aeroportCdg = new Aeroport();
 		aeroportCdg.setNomAeroport("Charles de Gaulle");
@@ -232,6 +240,19 @@ public class Test {
 		vol1.setAeroportDepart(aeroportOrly);
 		vol1 = volDao.update(vol1);
 		
+		CompagnieAerienne compagnieAerienne1=new CompagnieAerienne();
+		compagnieAerienne1.setNom("Air France");
+		compagnieAerienneDao.create(compagnieAerienne1);
+		
+		CompagnieAerienne compagnieAerienne2=new CompagnieAerienne();
+		compagnieAerienne2.setNom("Air Canada");
+		compagnieAerienneDao.create(compagnieAerienne2);
+		
+		CompagnieAerienneVol compvol1 = new CompagnieAerienneVol();
+		compvol1.setCompagnieAerienne(compagnieAerienne1);
+		compvol1.setVol(vol1);
+		compvol1.setNumero("lolol");
+		compagnieAerienneVolDao.create(compvol1);
 		
 		resa1.setVol(vol1);
 		resa2.setVol(vol1);

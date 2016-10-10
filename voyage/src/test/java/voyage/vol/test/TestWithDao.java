@@ -3,19 +3,29 @@ package voyage.vol.test;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+
+import voyage.model.Reservation;
 import voyage.Application;
 import voyage.vol.dao.AeroportDao;
 import voyage.vol.dao.AeroportDaoJpa;
 import voyage.vol.dao.AeroportVilleDao;
 import voyage.vol.dao.AeroportVilleDaoJpa;
+import voyage.vol.dao.CompagnieAerienneDao;
+import voyage.vol.dao.CompagnieAerienneDaoJpa;
+import voyage.vol.dao.CompagnieAerienneVolDao;
+import voyage.vol.dao.CompagnieAerienneVolDaoJpa;
 import voyage.vol.dao.EscaleDao;
 import voyage.vol.dao.EscaleDaoJpa;
+import voyage.dao.ReservationDao;
+import voyage.dao.ReservationDaoJpa;
 import voyage.vol.dao.VilleDao;
 import voyage.vol.dao.VilleDaoJpa;
 import voyage.vol.dao.VolDao;
 import voyage.vol.dao.VolDaoJpa;
 import voyage.vol.model.Aeroport;
 import voyage.vol.model.AeroportVille;
+import voyage.vol.model.CompagnieAerienne;
+import voyage.vol.model.CompagnieAerienneVol;
 import voyage.vol.model.Escale;
 import voyage.vol.model.Ville;
 import voyage.vol.model.Vol;
@@ -33,6 +43,9 @@ public class TestWithDao {
 		VolDao volDao = new VolDaoJpa();
 		EscaleDao escaleDao =new EscaleDaoJpa();
 		AeroportVilleDao aeroportVilleDao = new AeroportVilleDaoJpa();
+		ReservationDao reservationDao = new ReservationDaoJpa();
+		CompagnieAerienneDao compagnieAerienneDao= new CompagnieAerienneDaoJpa();
+		CompagnieAerienneVolDao compagnieAerienneVolDao =new CompagnieAerienneVolDaoJpa();
 		
 		Aeroport aeroportCdg = new Aeroport();
 		aeroportCdg.setNomAeroport("Charles de Gaulle");
@@ -56,6 +69,11 @@ public class TestWithDao {
 		Aeroport aeroportOrly = new Aeroport();
 		aeroportOrly.setNomAeroport("Aéroport d'Orly");
 		aeroportDao.create(aeroportOrly);
+		
+		Reservation reservation1 = new Reservation();
+		reservation1.setDate(sdf.parse("01/10/2016"));
+		reservation1.setNumero(1234);
+		reservationDao.create(reservation1);
 
 		
 		Ville paris = new Ville();
@@ -116,8 +134,13 @@ public class TestWithDao {
 		aeroportVilleDao.create(av6);
 		
 	
+		CompagnieAerienne compagnieAerienne1=new CompagnieAerienne();
+		compagnieAerienne1.setNom("Air France");
+		compagnieAerienneDao.create(compagnieAerienne1);
 		
-		
+		CompagnieAerienne compagnieAerienne2=new CompagnieAerienne();
+		compagnieAerienne2.setNom("Air Canada");
+		compagnieAerienneDao.create(compagnieAerienne2);
 		
 		Vol vol1 = new Vol();
 		vol1.setAeroportDepart(aeroportCdg);
@@ -127,6 +150,11 @@ public class TestWithDao {
 		vol1.setHeureDepart(heure.parse("11:30 PM"));
 		vol1.setHeureArrivee(heure.parse("01:30 PM"));
 		volDao.create(vol1);
+		
+		CompagnieAerienneVol compvol1 = new CompagnieAerienneVol();
+		compvol1.setCompagnieAerienne(compagnieAerienne1);
+		compvol1.setVol(vol1);
+		compagnieAerienneVolDao.create(compvol1);
 		
 		Escale escale1 = new Escale();
 		escale1.setAeroport(aeroportJfk);
@@ -142,10 +170,10 @@ public class TestWithDao {
 		escale2.setHeureArriveeEscale(heure.parse("11:30 AM"));
 		escaleDao.create(escale2);
 		
-		vol1.addEscale(escale2);
-		vol1.addEscale(escale1);
-		vol1.setAeroportDepart(aeroportOrly);
-		vol1 = volDao.update(vol1);
+//		vol1.addEscale(escale2);
+//		vol1.addEscale(escale1);
+//		vol1.setAeroportDepart(aeroportOrly);
+//		vol1 = volDao.update(vol1);
 		
 		
 		
@@ -153,5 +181,5 @@ public class TestWithDao {
 		
 		Application.close();
 	}
-
+	
 }
