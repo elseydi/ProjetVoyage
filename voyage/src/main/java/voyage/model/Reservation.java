@@ -26,6 +26,8 @@ public class Reservation {
 	private Client client;
 	private Vol vol;
 	
+	private String lol;
+	
 	public Reservation() {
 		super();
 		// TODO Auto-generated constructor stub
