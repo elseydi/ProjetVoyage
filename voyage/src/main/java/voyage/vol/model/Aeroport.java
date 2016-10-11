@@ -30,7 +30,6 @@ public class Aeroport {
 	
 	public Aeroport() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	
@@ -102,7 +101,7 @@ public class Aeroport {
 	}
 	
 	
-	@OneToMany(mappedBy = "aeroport")
+	@OneToMany (mappedBy = "id.aeroport") //IdClass
 	public List<Escale> getEscales() {
 		return escales;
 	}

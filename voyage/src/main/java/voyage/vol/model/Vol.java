@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
@@ -135,7 +136,10 @@ public class Vol {
 	}
 
 
-	@OneToMany(mappedBy = "vol")
+	@OneToMany (mappedBy = "id.vol") // IdClass
+	// Embedded Id
+//	@JoinColumns({ @JoinColumn(referencedColumnName = "vol", name = "escale_vol"),
+//		@JoinColumn(referencedColumnName = "aeroport", name = "escale_aeroport") }) 
 	public List<Escale> getEscales() {
 		return escales;
 	}

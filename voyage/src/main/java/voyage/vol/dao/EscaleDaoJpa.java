@@ -80,8 +80,9 @@ public class EscaleDaoJpa implements EscaleDao {
 
 			tx.begin();
 
-			obj.setVol(em.merge(obj.getVol()));
-			obj.setAeroport(em.merge(obj.getAeroport()));
+			// IdClass
+//			obj.setVol(em.merge(obj.getVol()));
+//			obj.setAeroport(em.merge(obj.getAeroport()));
 			
 			em.persist(obj);
 

@@ -27,6 +27,7 @@ import voyage.vol.model.AeroportVille;
 import voyage.vol.model.CompagnieAerienne;
 import voyage.vol.model.CompagnieAerienneVol;
 import voyage.vol.model.Escale;
+import voyage.vol.model.EscaleId;
 import voyage.vol.model.Ville;
 import voyage.vol.model.Vol;
 
@@ -36,7 +37,6 @@ public class TestWithDao {
 	private static SimpleDateFormat heure = new SimpleDateFormat("h:mm a");
 
 	public static void main(String[] args) throws ParseException {
-		// TODO Auto-generated method stub
 
 		AeroportDao aeroportDao = new AeroportDaoJpa();
 		VilleDao villeDao = new VilleDaoJpa();
@@ -157,15 +157,17 @@ public class TestWithDao {
 		compagnieAerienneVolDao.create(compvol1);
 		
 		Escale escale1 = new Escale();
-		escale1.setAeroport(aeroportJfk);
-		escale1.setVol(vol1);
+//		escale1.setAeroport(aeroportJfk);
+//		escale1.setVol(vol1);
+		escale1.setId(new EscaleId(aeroportJfk,vol1)); //Embedded
 		escale1.setHeureDepartEscale(heure.parse("09:30 AM"));
 		escale1.setHeureArriveeEscale(heure.parse("08:30 AM"));
 		escaleDao.create(escale1);
 		
 		Escale escale2 = new Escale();
-		escale2.setAeroport(aeroportChicago);
-		escale2.setVol(vol1);
+//		escale2.setAeroport(aeroportChicago);
+//		escale2.setVol(vol1);
+		escale2.setId(new EscaleId(aeroportChicago,vol1)); //Embedded
 		escale2.setHeureDepartEscale(heure.parse("12:30 AM"));
 		escale2.setHeureArriveeEscale(heure.parse("11:30 AM"));
 		escaleDao.create(escale2);

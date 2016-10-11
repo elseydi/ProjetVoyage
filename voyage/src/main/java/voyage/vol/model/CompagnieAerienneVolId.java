@@ -13,7 +13,6 @@ public class CompagnieAerienneVolId implements Serializable{
 	
 	public CompagnieAerienneVolId() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 

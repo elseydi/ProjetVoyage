@@ -26,7 +26,6 @@ public class Passager {
 	
 	public Passager() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Passager(String nom, String prenom) {
@@ -89,10 +88,6 @@ public class Passager {
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
 	}
-
-	
-	
-	
 	
 
 }

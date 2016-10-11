@@ -14,7 +14,6 @@ public class AeroportVilleId implements Serializable{
 	
 	public AeroportVilleId() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	

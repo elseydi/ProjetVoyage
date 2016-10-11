@@ -24,7 +24,6 @@ public class AeroportVille {
 	
 	public AeroportVille() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	

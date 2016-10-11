@@ -22,7 +22,6 @@ public class Ville {
 
 	public Ville() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	

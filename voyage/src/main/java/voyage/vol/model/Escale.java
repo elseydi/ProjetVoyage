@@ -21,31 +21,31 @@ import javax.persistence.Version;
 
 @Entity
 @Table(name = "Escale")
-@IdClass(EscaleId.class)
+//@IdClass(EscaleId.class)
 public class Escale  {
 	
-	//private EscaleId escaleId;
+	private EscaleId id; //Embedded
 	private int version;
 	private Date heureDepartEscale;
 	private Date heureArriveeEscale;
-	private Vol vol;
-	private Aeroport aeroport;
+//	private Vol vol; //IdClass
+//	private Aeroport aeroport; //IdClass
 	
 	
 	public Escale() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	
 	
-//	@EmbeddedId
-//	public EscaleId getEscaleId() {
-//		return escaleId;
-//	}
-//	public void setEscaleId(EscaleId escaleId) {
-//		this.escaleId = escaleId;
-//	}
+	@EmbeddedId // Embedded
+	public EscaleId getId() {
+		return id;
+	}
+	
+	public void setId(EscaleId id) {
+		this.id = id;
+	}
 	
 	@Version
 	public int getVersion() {
@@ -73,28 +73,29 @@ public class Escale  {
 		this.heureArriveeEscale = heureArriveeEscale;
 	}
 
-	@Id
-	@ManyToOne
-	@JoinColumn(name = "Vol_id", nullable=false)
-	public Vol getVol() {
-		return vol;
-	}
-
-	public void setVol(Vol vol) {
-		this.vol = vol;
-	}
-
-	@Id
-	@ManyToOne
-	@JoinColumn(name = "Aeroport_id", nullable=false)
-	public Aeroport getAeroport() {
-		return aeroport;
-	}
-
-	
-	public void setAeroport(Aeroport aeroport) {
-		this.aeroport = aeroport;
-	}
+	// Pour l'ID CLASS
+//	@Id
+//	@ManyToOne
+//	@JoinColumn(name = "Vol_id", nullable=false)
+//	public Vol getVol() {
+//		return vol;
+//	}
+//
+//	public void setVol(Vol vol) {
+//		this.vol = vol;
+//	}
+//
+//	@Id
+//	@ManyToOne
+//	@JoinColumn(name = "Aeroport_id", nullable=false)
+//	public Aeroport getAeroport() {
+//		return aeroport;
+//	}
+//
+//	
+//	public void setAeroport(Aeroport aeroport) {
+//		this.aeroport = aeroport;
+//	}
 	
 	
 	
