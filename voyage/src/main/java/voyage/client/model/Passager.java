@@ -88,6 +88,14 @@ public class Passager {
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
 	}
+
+	// ------ METHODES --------
+	public void addReservation(Reservation reservation){
+		lReservations.add(reservation);
+	}
 	
+	public void removeReservation(Reservation reservation){
+		lReservations.remove(reservation);
+	}
 
 }
