@@ -266,6 +266,12 @@ public class Test {
 		reservationDao.create(resa3);
 		reservationDao.create(resa4);
 		
+		// TEST GETTERS LIST
+		client2 = clientDao.find(client2.getId());
+		System.out.println(client2.getReservations());
+		
+		p1= passagerDao.find(p1.getId());
+		System.out.println(p1.getreservations());
 		
 		Application.close();
 	}
