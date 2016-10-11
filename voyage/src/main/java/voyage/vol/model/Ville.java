@@ -44,7 +44,7 @@ public class Ville {
 		this.id = id;
 	}
 	
-	@Column(length = 100)
+	@Column(length = 100, nullable=false)
 	public String getNomVille() {
 		return nomVille;
 	}

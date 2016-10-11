@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -54,7 +55,7 @@ public class Vol {
 	
 
 	@ManyToOne
-	@JoinColumn(name = "id_aeroport_arrivee")
+	@JoinColumn(name = "id_aeroport_arrivee", nullable=false)
 	public Aeroport getAeroportArrivee() {
 		return aeroportArrivee;
 	}
@@ -65,7 +66,7 @@ public class Vol {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "id_aeroport_depart")
+	@JoinColumn(name = "id_aeroport_depart", nullable=false)
 	public Aeroport getAeroportDepart() {
 		return aeroportDepart;
 	}
@@ -76,6 +77,7 @@ public class Vol {
 	}
 
 	@Temporal(TemporalType.DATE)
+	@Column(nullable=false)
 	public Date getDateDepart() {
 		return dateDepart;
 	}
@@ -85,12 +87,9 @@ public class Vol {
 		this.dateDepart = dateDepart;
 	}
 
-	
-
-	
-
 
 	@Temporal(TemporalType.DATE)
+	@Column(nullable=false)
 	public Date getDateArrivee() {
 		return dateArrivee;
 	}
@@ -102,6 +101,7 @@ public class Vol {
 
 
 	@Temporal(TemporalType.TIME)
+	@Column(nullable=false)
 	public Date getHeureDepart() {
 		return heureDepart;
 	}
@@ -113,6 +113,7 @@ public class Vol {
 
 
 	@Temporal(TemporalType.TIME)
+	@Column(nullable=false)
 	public Date getHeureArrivee() {
 		return heureArrivee;
 	}

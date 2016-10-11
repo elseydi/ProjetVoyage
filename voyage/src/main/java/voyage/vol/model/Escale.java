@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -55,6 +56,7 @@ public class Escale  {
 	}
 	
 	@Temporal(TemporalType.TIME)
+	@Column(nullable=false)
 	public Date getHeureDepartEscale() {
 		return heureDepartEscale;
 	}
@@ -63,6 +65,7 @@ public class Escale  {
 	}
 	
 	@Temporal(TemporalType.TIME)
+	@Column(nullable=false)
 	public Date getHeureArriveeEscale() {
 		return heureArriveeEscale;
 	}
@@ -72,7 +75,7 @@ public class Escale  {
 
 	@Id
 	@ManyToOne
-	@JoinColumn(name = "Vol_id")
+	@JoinColumn(name = "Vol_id", nullable=false)
 	public Vol getVol() {
 		return vol;
 	}
@@ -83,7 +86,7 @@ public class Escale  {
 
 	@Id
 	@ManyToOne
-	@JoinColumn(name = "Aeroport_id")
+	@JoinColumn(name = "Aeroport_id", nullable=false)
 	public Aeroport getAeroport() {
 		return aeroport;
 	}

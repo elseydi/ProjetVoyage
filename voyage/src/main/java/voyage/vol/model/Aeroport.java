@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Version;
 
@@ -50,7 +51,7 @@ public class Aeroport {
 		this.id = id;
 	}
 
-	@Column(length = 100)
+	@Column(length = 100, nullable=false)
 	public String getNomAeroport() {
 		return nomAeroport;
 	}
@@ -59,11 +60,6 @@ public class Aeroport {
 	public void setNomAeroport(String nomAeroport) {
 		this.nomAeroport = nomAeroport;
 	}
-
-
-
-	
-	
 
 	@OneToMany(mappedBy = "aeroportArrivee")
 	public List<Vol> getVolarrivees() {

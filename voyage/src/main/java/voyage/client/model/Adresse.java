@@ -23,7 +23,7 @@ public class Adresse {
 		this.pays=pays;
 	}
 
-	@Column(length=100)
+	@Column(length=100, nullable=false)
 	public String getAdresse() {
 		return adresse;
 	}
@@ -32,6 +32,7 @@ public class Adresse {
 		this.adresse = adresse;
 	}
 
+	@Column(length=50, nullable=false)
 	public String getCodePostal() {
 		return codePostal;
 	}
@@ -40,7 +41,7 @@ public class Adresse {
 		this.codePostal = codePostal;
 	}
 
-	@Column(length=50)
+	@Column(length=50, nullable=false)
 	public String getVille() {
 		return ville;
 	}
@@ -49,7 +50,7 @@ public class Adresse {
 		this.ville = ville;
 	}
 
-	@Column(length=50)
+	@Column(length=50, nullable=false)
 	public String getPays() {
 		return pays;
 	}

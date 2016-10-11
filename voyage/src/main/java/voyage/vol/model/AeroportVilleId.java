@@ -24,6 +24,7 @@ public class AeroportVilleId implements Serializable{
 	public void setAeroport(Aeroport aeroport) {
 		this.aeroport = aeroport;
 	}
+	
 	public Ville getVille() {
 		return ville;
 	}

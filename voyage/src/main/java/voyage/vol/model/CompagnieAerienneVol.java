@@ -1,5 +1,6 @@
 package voyage.vol.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
@@ -50,7 +51,7 @@ public class CompagnieAerienneVol {
 		this.vol = vol;
 	}
 
-	@JoinColumn(nullable=false)
+	@Column(length=100, nullable=false)
 	public String getNumero() {
 		return numero;
 	}

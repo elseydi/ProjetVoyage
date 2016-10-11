@@ -1,5 +1,6 @@
 package voyage.client.model;
 
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
@@ -29,6 +30,8 @@ public class ClientMoral extends Client {
 	public void setTitre(TitreMoral titre) {
 		this.titre = titre;
 	}
+	
+	@Column(length=50)
 	public String getSiret() {
 		return siret;
 	}

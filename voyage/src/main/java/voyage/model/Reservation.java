@@ -2,6 +2,7 @@ package voyage.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -51,6 +52,7 @@ public class Reservation {
 	}
 
 	@Temporal(TemporalType.DATE)
+	@Column(nullable=false)
 	public Date getDate() {
 		return date;
 	}
@@ -59,6 +61,7 @@ public class Reservation {
 		this.date = date;
 	}
 
+	@Column(length=50, nullable=false)
 	public Integer getNumero() {
 		return numero;
 	}
@@ -87,7 +90,7 @@ public class Reservation {
 	}
 	
 	@ManyToOne
-	@JoinColumn(name="client_id")
+	@JoinColumn(name="client_id", nullable=false)
 	public Client getClient() {
 		return client;
 	}

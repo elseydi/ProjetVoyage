@@ -45,7 +45,7 @@ public class Passager {
 		this.id = id;
 	}
 
-	@Column(length=50)
+	@Column(length=50, nullable=false)
 	public String getNom() {
 		return nom;
 	}
@@ -54,7 +54,7 @@ public class Passager {
 		this.nom = nom;
 	}
 
-	@Column(length=50)
+	@Column(length=50, nullable=false)
 	public String getPrenom() {
 		return prenom;
 	}
@@ -81,6 +81,7 @@ public class Passager {
 		this.lReservations = lReservations;
 	}
 
+	@Column(nullable=false)
 	public Adresse getAdresse() {
 		return adresse;
 	}

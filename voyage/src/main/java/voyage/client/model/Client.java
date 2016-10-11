@@ -53,7 +53,7 @@ public abstract class Client {
 		this.version = version;
 	}
 
-	@Column(length=50)
+	@Column(length=50, nullable=false)
 	public String getNom() {
 		return nom;
 	}
@@ -80,7 +80,7 @@ public abstract class Client {
 		this.numeroFax = numeroFax;
 	}
 
-	@Column(length=100)
+	@Column(length=100, nullable=false)
 	public String getEmail() {
 		return email;
 	}
@@ -89,6 +89,7 @@ public abstract class Client {
 		this.email = email;
 	}
 
+	@Column(nullable=false)
 	public Adresse getAdresse() {
 		return adresse;
 	}

@@ -2,6 +2,7 @@ package voyage.test;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import voyage.Application;
 import voyage.client.dao.ClientDao;
@@ -56,27 +57,22 @@ public class Test {
 		ReservationDao reservationDao=new ReservationDaoJpa();
 		PassagerDao passagerDao=new PassagerDaoJpa();
 		
-		Reservation resa1=new Reservation(sdf.parse("08/08/2016"), 15478);
-		Reservation resa2=new Reservation(sdf.parse("09/08/2016"), 15479);
-		Reservation resa3=new Reservation(sdf.parse("10/08/2016"), 15480);
-		Reservation resa4=new Reservation(sdf.parse("11/08/2016"), 15481);
+		Reservation resa1=new Reservation(new Date(), 15478);
+		Reservation resa2=new Reservation(new Date(), 15479);
+		Reservation resa3=new Reservation(new Date(), 15480);
+		Reservation resa4=new Reservation(new Date(), 15481);
 		
 		Passager p1=new Passager("Dupond", "Michel");
 		Passager p2=new Passager("BIDULE", "chose");
 		Passager p3=new Passager("MACHIN", "Truc");
 		
-		passagerDao.create(p1);
-		passagerDao.create(p2);
-		passagerDao.create(p3);
-		
 		p1.setAdresse(new Adresse("1 rue de la paix", "75001", "Paris", "France"));
 		p2.setAdresse(new Adresse("1 place de la bourse", "75002", "Paris", "France"));
 		p3.setAdresse(new Adresse("1 deux trois soleil", "94000", "Créteil", "France"));
-
 		
-		p1=passagerDao.update(p1);
-		p2=passagerDao.update(p2);
-		p3=passagerDao.update(p3);
+		passagerDao.create(p1);
+		passagerDao.create(p2);
+		passagerDao.create(p3);
 		
 		resa1.setPassager(p1);
 		resa2.setPassager(p1);
@@ -90,8 +86,12 @@ public class Test {
 		ClientDao clientDao = new ClientDaoJpa();
 		
 		Client client1 = new ClientPhysique("MICHELIN", "luc", "0123456789", "015478965", "luc@google.com", TitrePhysique.MR);
+		client1.setAdresse(new Adresse("RUE DU MORT", "75666", "Paris", "France"));
 		Client client2 = new ClientMoral("MACHIN", "0352698745", "", "machin@lol.fr", TitreMoral.SARL, "12357879848974");
+		client2.setAdresse(new Adresse("Regzegzegze", "77000", "Melun", "France"));
 		Client client3 = new ClientEI("TRUC", "jacqueline", "456789465", "7845645", "truc.j@boite.com", TitrePhysique.MLLE);
+		client3.setAdresse(new Adresse("afazefafaazf", "94500", "Chamigny", "France"));
+		
 		clientDao.create(client1);
 		clientDao.create(client2);
 		clientDao.create(client3);
@@ -109,7 +109,6 @@ public class Test {
 		client1.setLogin(log1);
 //		client1.addReservation(resa1);
 //		client1.addReservation(resa4);
-		client1.setAdresse(new Adresse("RUE DU MORT", "75666", "Paris", "France"));
 		client1 = clientDao.update(client1);
 		
 		client2.setLogin(log2);

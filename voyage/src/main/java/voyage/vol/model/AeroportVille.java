@@ -20,6 +20,8 @@ public class AeroportVille {
 	private Aeroport aeroport;
 	private Ville ville;
 	private int version;
+	
+	
 	public AeroportVille() {
 		super();
 		// TODO Auto-generated constructor stub
