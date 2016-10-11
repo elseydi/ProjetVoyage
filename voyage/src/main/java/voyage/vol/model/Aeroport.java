@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Version;
 
+import voyage.model.Reservation;
+
 
 
 
@@ -111,4 +113,37 @@ public class Aeroport {
 		this.escales = escales;
 	}
 	
+	
+	// ------- METHODES ---------
+	public void addVille(AeroportVille ville){
+		villes.add(ville);
+	}
+	
+	public void removeVille(AeroportVille ville){
+		villes.remove(ville);
+	}
+	
+	public void addVolDepart(Vol vol){
+		voldeparts.add(vol);
+	}
+	
+	public void removeVolDepart(Vol vol){
+		voldeparts.remove(vol);
+	}
+	
+	public void addVolArrivee(Vol vol){
+		volarrivees.add(vol);
+	}
+	
+	public void removeVolArrivee(Vol vol){
+		volarrivees.remove(vol);
+	}
+	
+	public void addEscale(Escale escale){
+		escales.add(escale);
+	}
+	
+	public void removeEscale(Escale escale){
+		escales.remove(escale);
+	}
 }
