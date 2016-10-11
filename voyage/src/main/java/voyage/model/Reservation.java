@@ -27,9 +27,6 @@ public class Reservation {
 	private Vol vol;
 	private int version;
 	
-	
-	private String lol;
-	
 	public Reservation() {
 		super();
 	}
@@ -108,11 +105,13 @@ public class Reservation {
 		this.vol = vol;
 	}
 
+	@Override
+	public String toString() {
+		return "Reservation [id=" + id + ", date=" + date + ", numero=" + numero + ", passager=" + passager
+				+ ", client=" + client + ", vol=" + vol + ", version=" + version + "]";
+	}
 
-	
-	
-	
-	
+
 	
 	
 }
