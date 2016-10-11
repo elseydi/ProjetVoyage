@@ -74,6 +74,13 @@ public class Ville {
 	}
 	
 	
+	// --------- METHODES --------
+	public void addAeroport(AeroportVille aeroport){
+		aeroports.add(aeroport);
+	}
 
+	public void removeAeroport(AeroportVille aeroport){
+		aeroports.remove(aeroport);
+	}
 	
 }

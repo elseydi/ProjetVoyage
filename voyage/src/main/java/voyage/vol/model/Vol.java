@@ -150,15 +150,6 @@ public class Vol {
 	}
 	
 	
-	public void addEscale(Escale escale) {
-		this.escales.add(escale);
-	}
-
-	public void removeEscale(Escale escale) {
-		this.escales.remove(escale);
-	}
-
-
 	@OneToMany(mappedBy = "vol")
 	public List<Reservation> getReservations() {
 		return reservations;
@@ -169,7 +160,21 @@ public class Vol {
 		this.reservations = reservations;
 	}
 	
+	// -------- METHODES ------------
+	public void addEscale(Escale escale) {
+		this.escales.add(escale);
+	}
 
+	public void removeEscale(Escale escale) {
+		this.escales.remove(escale);
+	}
 	
+	public void addReservation(Reservation reservation){
+		reservations.add(reservation);
+	}
+	
+	public void removeReservation(Reservation reservation){
+		reservations.remove(reservation);
+	}
 	
 }

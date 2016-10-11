@@ -15,7 +15,7 @@ public class CompagnieAerienne {
 
 	private long id;
 	private String nom;
-	private List<CompagnieAerienneVol> compagnieAerienneVols = new ArrayList<CompagnieAerienneVol>();
+	private List<CompagnieAerienneVol> vols = new ArrayList<CompagnieAerienneVol>();
 	
 	public CompagnieAerienne() {
 		super();
@@ -41,16 +41,21 @@ public class CompagnieAerienne {
 	}
 
 	@OneToMany(mappedBy = "compagnieAerienne")
-	public List<CompagnieAerienneVol> getCompagnieAerienneVols() {
-		return compagnieAerienneVols;
+	public List<CompagnieAerienneVol> getVols() {
+		return vols;
 	}
 
-	public void setCompagnieAerienneVols(List<CompagnieAerienneVol> compagnieAerienneVols) {
-		this.compagnieAerienneVols = compagnieAerienneVols;
+	public void setVols(List<CompagnieAerienneVol> vols) {
+		this.vols = vols;
 	}
 	
 	
+	public void addVol(CompagnieAerienneVol vol){
+		vols.add(vol);
+	}
 	
-	
+	public void removeVol(CompagnieAerienneVol vol){
+		vols.remove(vol);
+	}
 	
 }

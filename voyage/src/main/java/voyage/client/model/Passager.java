@@ -19,7 +19,7 @@ public class Passager {
 	private String nom;
 	private String prenom;
 	private Adresse adresse;
-	private List<Reservation> lReservations;
+	private List<Reservation> reservations;
 	private int version;
 	
 	
@@ -72,12 +72,12 @@ public class Passager {
 	}
 
 	@OneToMany(fetch = FetchType.EAGER, mappedBy="passager")
-	public List<Reservation> getlReservations() {
-		return lReservations;
+	public List<Reservation> getreservations() {
+		return reservations;
 	}
 
-	public void setlReservations(List<Reservation> lReservations) {
-		this.lReservations = lReservations;
+	public void setreservations(List<Reservation> reservations) {
+		this.reservations = reservations;
 	}
 
 	@Column(nullable=false)
@@ -91,11 +91,11 @@ public class Passager {
 
 	// ------ METHODES --------
 	public void addReservation(Reservation reservation){
-		lReservations.add(reservation);
+		reservations.add(reservation);
 	}
 	
 	public void removeReservation(Reservation reservation){
-		lReservations.remove(reservation);
+		reservations.remove(reservation);
 	}
 
 }
