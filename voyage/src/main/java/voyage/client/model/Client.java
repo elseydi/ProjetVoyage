@@ -62,7 +62,7 @@ public abstract class Client {
 		this.nom = nom;
 	}
 
-	@Column(length=20)
+	@Column(name="numero_tel", length=20)
 	public String getNumeroTel() {
 		return numeroTel;
 	}
@@ -71,7 +71,7 @@ public abstract class Client {
 		this.numeroTel = numeroTel;
 	}
 
-	@Column(length=20)
+	@Column(name="numero_fax", length=20)
 	public String getNumeroFax() {
 		return numeroFax;
 	}
@@ -89,7 +89,6 @@ public abstract class Client {
 		this.email = email;
 	}
 
-	@Column(nullable=false)
 	public Adresse getAdresse() {
 		return adresse;
 	}
@@ -99,7 +98,7 @@ public abstract class Client {
 	}
 
 	@OneToOne
-	@JoinColumn(name="LoginId", nullable=true)
+	@JoinColumn(name="Login_id", nullable=true)
 	public Login getLogin() {
 		return login;
 	}

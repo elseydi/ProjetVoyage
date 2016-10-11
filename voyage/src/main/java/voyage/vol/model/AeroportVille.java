@@ -38,7 +38,7 @@ public class AeroportVille {
 
 	@Id
 	@ManyToOne
-	@JoinColumn(name = "Aeroport_id")
+	@JoinColumn(name = "aeroport_id")
 	public Aeroport getAeroport() {
 		return aeroport;
 	}
@@ -48,7 +48,7 @@ public class AeroportVille {
 	
 	@Id
 	@ManyToOne
-	@JoinColumn(name = "Ville_id")
+	@JoinColumn(name = "ville_id")
 	public Ville getVille() {
 		return ville;
 	}

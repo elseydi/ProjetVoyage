@@ -21,10 +21,10 @@ import voyage.model.Reservation;
 public class Aeroport {
 
 	private long id;
-	private String nomAeroport;
+	private String nom;
 	private List<AeroportVille> villes = new ArrayList<AeroportVille>();
-	private List<Vol> voldeparts = new ArrayList<Vol>();
-	private List<Vol> volarrivees = new ArrayList<Vol>();
+	private List<Vol> volDeparts = new ArrayList<Vol>();
+	private List<Vol> volArrivees = new ArrayList<Vol>();
 	private List<Escale> escales = new ArrayList<Escale>();
 	
 
@@ -35,9 +35,9 @@ public class Aeroport {
 	}
 
 	
-	public Aeroport(String nomAeroport) {
+	public Aeroport(String nom) {
 		super();
-		this.nomAeroport = nomAeroport;
+		this.nom = nom;
 	}
 
 
@@ -53,34 +53,34 @@ public class Aeroport {
 	}
 
 	@Column(length = 100, nullable=false)
-	public String getNomAeroport() {
-		return nomAeroport;
+	public String getNom() {
+		return nom;
 	}
 
 	
-	public void setNomAeroport(String nomAeroport) {
-		this.nomAeroport = nomAeroport;
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
 
 	@OneToMany(mappedBy = "aeroportArrivee")
-	public List<Vol> getVolarrivees() {
-		return volarrivees;
+	public List<Vol> getVolArrivees() {
+		return volArrivees;
 	}
 
 
-	public void setVolarrivees(List<Vol> volarrivees) {
-		this.volarrivees = volarrivees;
+	public void setVolArrivees(List<Vol> volArrivees) {
+		this.volArrivees = volArrivees;
 	}
 
 
 	@OneToMany(mappedBy = "aeroportDepart")
-	public List<Vol> getVoldeparts() {
-		return voldeparts;
+	public List<Vol> getVolDeparts() {
+		return volDeparts;
 	}
 
 
-	public void setVoldeparts(List<Vol> voldeparts) {
-		this.voldeparts = voldeparts;
+	public void setVolDeparts(List<Vol> volDeparts) {
+		this.volDeparts = volDeparts;
 	}
 
 
@@ -124,19 +124,19 @@ public class Aeroport {
 	}
 	
 	public void addVolDepart(Vol vol){
-		voldeparts.add(vol);
+		volDeparts.add(vol);
 	}
 	
 	public void removeVolDepart(Vol vol){
-		voldeparts.remove(vol);
+		volDeparts.remove(vol);
 	}
 	
 	public void addVolArrivee(Vol vol){
-		volarrivees.add(vol);
+		volArrivees.add(vol);
 	}
 	
 	public void removeVolArrivee(Vol vol){
-		volarrivees.remove(vol);
+		volArrivees.remove(vol);
 	}
 	
 	public void addEscale(Escale escale){

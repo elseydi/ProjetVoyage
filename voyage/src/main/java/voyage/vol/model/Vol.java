@@ -50,13 +50,10 @@ public class Vol {
 	public void setId(int id) {
 		this.id = id;
 	}
-
-	
-	
 	
 
 	@ManyToOne
-	@JoinColumn(name = "id_aeroport_arrivee", nullable=false)
+	@JoinColumn(name = "aeroport_arrivee_id", nullable=false)
 	public Aeroport getAeroportArrivee() {
 		return aeroportArrivee;
 	}
@@ -67,7 +64,7 @@ public class Vol {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "id_aeroport_depart", nullable=false)
+	@JoinColumn(name = "aeroport_depart_id", nullable=false)
 	public Aeroport getAeroportDepart() {
 		return aeroportDepart;
 	}
@@ -78,7 +75,7 @@ public class Vol {
 	}
 
 	@Temporal(TemporalType.DATE)
-	@Column(nullable=false)
+	@Column(name="date_depart", nullable=false)
 	public Date getDateDepart() {
 		return dateDepart;
 	}
@@ -90,7 +87,7 @@ public class Vol {
 
 
 	@Temporal(TemporalType.DATE)
-	@Column(nullable=false)
+	@Column(name="date_arrivee", nullable=false)
 	public Date getDateArrivee() {
 		return dateArrivee;
 	}
@@ -102,7 +99,7 @@ public class Vol {
 
 
 	@Temporal(TemporalType.TIME)
-	@Column(nullable=false)
+	@Column(name="heure_depart", nullable=false)
 	public Date getHeureDepart() {
 		return heureDepart;
 	}
@@ -114,7 +111,7 @@ public class Vol {
 
 
 	@Temporal(TemporalType.TIME)
-	@Column(nullable=false)
+	@Column(name="heure_arrivee", nullable=false)
 	public Date getHeureArrivee() {
 		return heureArrivee;
 	}

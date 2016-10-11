@@ -131,54 +131,54 @@ public class Test {
 		CompagnieAerienneVolDao compagnieAerienneVolDao = new CompagnieAerienneVolDaoJpa();
 		
 		Aeroport aeroportCdg = new Aeroport();
-		aeroportCdg.setNomAeroport("Charles de Gaulle");
+		aeroportCdg.setNom("Charles de Gaulle");
 		aeroportDao.create(aeroportCdg);
 		
-		aeroportCdg.setNomAeroport("Roissy Charles de Gaulle");
+		aeroportCdg.setNom("Roissy Charles de Gaulle");
 		aeroportCdg = aeroportDao.update(aeroportCdg);
 		
 		Aeroport aeroportJfk = new Aeroport();
-		aeroportJfk.setNomAeroport("New York JFK");
+		aeroportJfk.setNom("New York JFK");
 		aeroportDao.create(aeroportJfk);
 		
 		Aeroport aeroportLax = new Aeroport();
-		aeroportLax.setNomAeroport("LAX");
+		aeroportLax.setNom("LAX");
 		aeroportDao.create(aeroportLax);
 		
 		Aeroport aeroportChicago = new Aeroport();
-		aeroportChicago.setNomAeroport("Chicago O'Hare");
+		aeroportChicago.setNom("Chicago O'Hare");
 		aeroportDao.create(aeroportChicago);
 		
 		Aeroport aeroportOrly = new Aeroport();
-		aeroportOrly.setNomAeroport("Aéroport d'Orly");
+		aeroportOrly.setNom("Aéroport d'Orly");
 		aeroportDao.create(aeroportOrly);
 
 		
 		Ville paris = new Ville();
-		paris.setNomVille("paname");
+		paris.setNom("paname");
 		villeDao.create(paris);
 
-		paris.setNomVille("Paris");
+		paris.setNom("Paris");
 		paris = villeDao.update(paris);
 		
 		Ville roissy = new Ville();
-		roissy.setNomVille("Roissy");
+		roissy.setNom("Roissy");
 		villeDao.create(roissy);
 		
 		Ville orly = new Ville();
-		orly.setNomVille("Orly");
+		orly.setNom("Orly");
 		villeDao.create(orly);
 		
 		Ville ny = new Ville();
-		ny.setNomVille("New York");
+		ny.setNom("New York");
 		villeDao.create(ny);
 		
 		Ville la = new Ville();
-		la.setNomVille("Los Angeles");
+		la.setNom("Los Angeles");
 		villeDao.create(la);
 		
 		Ville chicago = new Ville();
-		chicago.setNomVille("Chicago");
+		chicago.setNom("Chicago");
 		villeDao.create(chicago);
 		
 		AeroportVille av1 = new AeroportVille();
@@ -225,16 +225,16 @@ public class Test {
 //		escale1.setAeroport(aeroportJfk);
 //		escale1.setVol(vol1);
 		escale1.setId(new EscaleId(aeroportJfk,vol1)); //Embedded
-		escale1.setHeureDepartEscale(heure.parse("09:30 AM"));
-		escale1.setHeureArriveeEscale(heure.parse("08:30 AM"));
+		escale1.setHeureDepart(heure.parse("09:30 AM"));
+		escale1.setHeureArrivee(heure.parse("08:30 AM"));
 		escaleDao.create(escale1);
 		
 		Escale escale2 = new Escale();
 //		escale2.setAeroport(aeroportChicago);
 //		escale2.setVol(vol1);
 		escale2.setId(new EscaleId(aeroportChicago, vol1)); // Embedded
-		escale2.setHeureDepartEscale(heure.parse("12:30 AM"));
-		escale2.setHeureArriveeEscale(heure.parse("11:30 AM"));
+		escale2.setHeureDepart(heure.parse("12:30 AM"));
+		escale2.setHeureArrivee(heure.parse("11:30 AM"));
 		escaleDao.create(escale2);
 		
 		vol1.addEscale(escale2);

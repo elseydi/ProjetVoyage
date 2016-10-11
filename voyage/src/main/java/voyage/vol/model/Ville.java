@@ -15,7 +15,7 @@ import javax.persistence.Version;
 public class Ville {
 	
 	private long id;
-	private String nomVille;
+	private String nom;
 	private List<AeroportVille> aeroports = new ArrayList<AeroportVille>();
 	private int version;
 	
@@ -24,13 +24,10 @@ public class Ville {
 		super();
 	}
 	
-	
-	
-	public Ville(String nomVille) {
+	public Ville(String nom) {
 		super();
-		this.nomVille = nomVille;
+		this.nom = nom;
 	}
-
 
 
 	@Id
@@ -44,11 +41,11 @@ public class Ville {
 	}
 	
 	@Column(length = 100, nullable=false)
-	public String getNomVille() {
-		return nomVille;
+	public String getNom() {
+		return nom;
 	}
-	public void setNomVille(String name) {
-		nomVille = name;
+	public void setNom(String name) {
+		nom = name;
 	}
 	
 	@OneToMany(mappedBy = "ville")

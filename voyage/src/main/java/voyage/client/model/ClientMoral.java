@@ -3,6 +3,8 @@ package voyage.client.model;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
 @Entity
 @DiscriminatorValue(value="ClientMoral")
@@ -23,6 +25,7 @@ public class ClientMoral extends Client {
 	}
 	
 	// ------------ GETTERS & SETTERS -------------
+	@Enumerated(EnumType.STRING)
 	public TitreMoral getTitre() {
 		return titre;
 	}

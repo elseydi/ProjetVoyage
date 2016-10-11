@@ -2,7 +2,9 @@ package voyage.vol.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Embeddable
@@ -21,6 +23,7 @@ public class EscaleId implements Serializable{
 	}
 	
 	@ManyToOne //Embedded
+	@JoinColumn(name="aeroport_id")
 	public Aeroport getAeroport() {
 		return aeroport;
 	}
@@ -29,6 +32,7 @@ public class EscaleId implements Serializable{
 	}
 	
 	@ManyToOne //Embedded
+	@JoinColumn(name="vol_id")
 	public Vol getVol() {
 		return vol;
 	}

@@ -23,7 +23,6 @@ public class Adresse {
 		this.pays=pays;
 	}
 
-	@Column(length=100, nullable=false)
 	public String getAdresse() {
 		return adresse;
 	}
@@ -32,7 +31,7 @@ public class Adresse {
 		this.adresse = adresse;
 	}
 
-	@Column(length=50, nullable=false)
+	@Column(name="code_postal", length=50, nullable=false)
 	public String getCodePostal() {
 		return codePostal;
 	}

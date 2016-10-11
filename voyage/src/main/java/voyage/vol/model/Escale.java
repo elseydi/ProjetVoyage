@@ -26,8 +26,8 @@ public class Escale  {
 	
 	private EscaleId id; //Embedded
 	private int version;
-	private Date heureDepartEscale;
-	private Date heureArriveeEscale;
+	private Date heureDepart;
+	private Date heureArrivee;
 //	private Vol vol; //IdClass
 //	private Aeroport aeroport; //IdClass
 	
@@ -56,21 +56,21 @@ public class Escale  {
 	}
 	
 	@Temporal(TemporalType.TIME)
-	@Column(nullable=false)
-	public Date getHeureDepartEscale() {
-		return heureDepartEscale;
+	@Column(name="heure_depart", nullable=false)
+	public Date getHeureDepart() {
+		return heureDepart;
 	}
-	public void setHeureDepartEscale(Date heureDepartEscale) {
-		this.heureDepartEscale = heureDepartEscale;
+	public void setHeureDepart(Date heureDepart) {
+		this.heureDepart = heureDepart;
 	}
 	
 	@Temporal(TemporalType.TIME)
-	@Column(nullable=false)
-	public Date getHeureArriveeEscale() {
-		return heureArriveeEscale;
+	@Column(name="heure_arrivee", nullable=false)
+	public Date getHeureArrivee() {
+		return heureArrivee;
 	}
-	public void setHeureArriveeEscale(Date heureArriveeEscale) {
-		this.heureArriveeEscale = heureArriveeEscale;
+	public void setHeureArrivee(Date heureArrivee) {
+		this.heureArrivee = heureArrivee;
 	}
 
 	// Pour l'ID CLASS
