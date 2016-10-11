@@ -108,7 +108,7 @@ public abstract class Client {
 		this.login = login;
 	}
 
-	@OneToMany(mappedBy="client")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="client")
 	public List<Reservation> getReservations() {
 		return reservations;
 	}
