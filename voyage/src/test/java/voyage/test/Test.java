@@ -277,18 +277,17 @@ public class Test {
 		vol1=volDao.find(vol1.getId());
 		System.out.println(vol1.getId());
 		
-		for(Reservation r:vol1.getLreservations())
+		for(Reservation r:vol1.getReservations())
 			reservationDao.delete(r);
-		vol1.setLreservations(null);
+		vol1.setReservations(null);
 		
-		for(CompagnieAerienneVol cvol:vol1.getlCompagnieAerienneVols())
+		for(CompagnieAerienneVol cvol:vol1.getCompagniesAeriennes())
 			compagnieAerienneVolDao.delete(cvol);
-		vol1.setlCompagnieAerienneVols(null);
+		vol1.setCompagniesAeriennes(null);
 		
-		for(Escale esc:vol1.getlEscales())
+		for(Escale esc:vol1.getEscales())
 			escaleDao.delete(esc);
-		
-		vol1.setlEscales(null);
+		vol1.setEscales(null);
 		
 		volDao.delete(vol1);
 		
