@@ -146,4 +146,12 @@ public class Aeroport {
 	public void removeEscale(Escale escale){
 		escales.remove(escale);
 	}
+
+
+	@Override
+	public String toString() {
+		return "Aeroport [id=" + id + "]";
+	}
+	
+	
 }

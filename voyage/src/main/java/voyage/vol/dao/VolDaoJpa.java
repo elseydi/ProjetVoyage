@@ -25,7 +25,11 @@ public class VolDaoJpa implements VolDao{
 
 			tx.begin();
 
-			vol = em.find(Vol.class, id);
+			//vol = em.find(Vol.class, id);
+			Query query = em.createQuery("select DISTINCT v from Vol v where v.id = :monId");
+			query.setParameter("monId", id);
+			vol = (Vol) query.getSingleResult();
+			
 			
 			tx.commit();
 		} catch (Exception e) {

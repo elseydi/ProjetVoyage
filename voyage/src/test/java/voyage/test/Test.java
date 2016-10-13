@@ -261,6 +261,13 @@ public class Test {
 		resa3.setVol(vol1);
 		resa4.setVol(vol1);
 		
+		vol1.addReservation(resa1);
+		vol1.addReservation(resa2);
+		vol1.addReservation(resa3);
+		vol1.addReservation(resa4);
+		vol1 = volDao.update(vol1);
+		
+		
 		reservationDao.create(resa1);
 		reservationDao.create(resa2);
 		reservationDao.create(resa3);
@@ -272,6 +279,15 @@ public class Test {
 		
 		p1= passagerDao.find(p1.getId());
 		System.out.println(p1.getreservations());
+		
+		// TEST GETTERS LIST
+		
+
+		
+		vol1 = volDao.find(vol1.getId());
+		System.out.println(vol1.getEscales());
+		System.out.println(vol1.getReservations());
+		
 		
 		Application.close();
 	}

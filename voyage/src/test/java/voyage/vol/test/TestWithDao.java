@@ -142,35 +142,35 @@ public class TestWithDao {
 		compagnieAerienne2.setNom("Air Canada");
 		compagnieAerienneDao.create(compagnieAerienne2);
 		
-		Vol vol1 = new Vol();
-		vol1.setAeroportDepart(aeroportCdg);
-		vol1.setAeroportArrivee(aeroportLax);
-		vol1.setDateDepart(sdf.parse("10/10/2016"));
-		vol1.setDateArrivee(sdf.parse("11/10/2016"));
-		vol1.setHeureDepart(heure.parse("11:30 PM"));
-		vol1.setHeureArrivee(heure.parse("01:30 PM"));
-		volDao.create(vol1);
+//		Vol vol1 = new Vol();
+//		vol1.setAeroportDepart(aeroportCdg);
+//		vol1.setAeroportArrivee(aeroportLax);
+//		vol1.setDateDepart(sdf.parse("10/10/2016"));
+//		vol1.setDateArrivee(sdf.parse("11/10/2016"));
+//		vol1.setHeureDepart(heure.parse("11:30 PM"));
+//		vol1.setHeureArrivee(heure.parse("01:30 PM"));
+//		volDao.create(vol1);
 		
-		CompagnieAerienneVol compvol1 = new CompagnieAerienneVol();
-		compvol1.setCompagnieAerienne(compagnieAerienne1);
-		compvol1.setVol(vol1);
-		compagnieAerienneVolDao.create(compvol1);
+//		CompagnieAerienneVol compvol1 = new CompagnieAerienneVol();
+//		compvol1.setCompagnieAerienne(compagnieAerienne1);
+//		compvol1.setVol(vol1);
+//		compagnieAerienneVolDao.create(compvol1);
 		
-		Escale escale1 = new Escale();
+		//Escale escale1 = new Escale();
 //		escale1.setAeroport(aeroportJfk);
 //		escale1.setVol(vol1);
-		escale1.setId(new EscaleId(aeroportJfk,vol1)); //Embedded
-		escale1.setHeureDepart(heure.parse("09:30 AM"));
-		escale1.setHeureArrivee(heure.parse("08:30 AM"));
-		escaleDao.create(escale1);
+		//escale1.setId(new EscaleId(aeroportJfk,vol1)); //Embedded
+		//escale1.setHeureDepart(heure.parse("09:30 AM"));
+		//escale1.setHeureArrivee(heure.parse("08:30 AM"));
+		//escaleDao.create(escale1);
 		
-		Escale escale2 = new Escale();
+		//Escale escale2 = new Escale();
 //		escale2.setAeroport(aeroportChicago);
 //		escale2.setVol(vol1);
-		escale2.setId(new EscaleId(aeroportChicago,vol1)); //Embedded
-		escale2.setHeureDepart(heure.parse("12:30 AM"));
-		escale2.setHeureArrivee(heure.parse("11:30 AM"));
-		escaleDao.create(escale2);
+		//escale2.setId(new EscaleId(aeroportChicago,vol1)); //Embedded
+		//escale2.setHeureDepart(heure.parse("12:30 AM"));
+		//escale2.setHeureArrivee(heure.parse("11:30 AM"));
+		//escaleDao.create(escale2);
 		
 //		vol1.addEscale(escale2);
 //		vol1.addEscale(escale1);
@@ -178,6 +178,10 @@ public class TestWithDao {
 //		vol1 = volDao.update(vol1);
 		
 		
+		
+		
+		
+				
 		
 		
 		

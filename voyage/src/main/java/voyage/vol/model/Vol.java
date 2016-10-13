@@ -2,10 +2,13 @@ package voyage.vol.model;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,7 +27,7 @@ import voyage.model.Reservation;
 @Entity
 public class Vol {
 	
-	private int id;
+	private long id;
 	private Date dateDepart;
 	private Date dateArrivee;
 	private Date heureDepart;
@@ -32,8 +35,8 @@ public class Vol {
 	private int version;
 	private Aeroport aeroportDepart;
 	private Aeroport aeroportArrivee;
-	private List<Escale> escales = new ArrayList<Escale>();
-	private List<Reservation> reservations = new ArrayList<Reservation>();
+	private Set<Escale> escales = new HashSet<Escale>();
+	private Set<Reservation> reservations = new HashSet<Reservation>();
 	
 	public Vol() {
 		super();
@@ -42,12 +45,12 @@ public class Vol {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	
@@ -133,27 +136,28 @@ public class Vol {
 	}
 
 
-	@OneToMany (mappedBy = "id.vol") // IdClass
+	@OneToMany (fetch = FetchType.EAGER, mappedBy = "id.vol") // IdClass
 	// Embedded Id
 //	@JoinColumns({ @JoinColumn(referencedColumnName = "vol", name = "escale_vol"),
 //		@JoinColumn(referencedColumnName = "aeroport", name = "escale_aeroport") }) 
-	public List<Escale> getEscales() {
+	public Set<Escale> getEscales() {
 		return escales;
 	}
 
 
-	public void setEscales(List<Escale> escales) {
+	public void setEscales(Set<Escale> escales) {
 		this.escales = escales;
 	}
 	
 	
-	@OneToMany(mappedBy = "vol")
-	public List<Reservation> getReservations() {
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "vol")
+	public Set<Reservation> getReservations() {
 		return reservations;
 	}
 
 
-	public void setReservations(List<Reservation> reservations) {
+	
+	public void setReservations(Set<Reservation> reservations) {
 		this.reservations = reservations;
 	}
 	
@@ -173,5 +177,16 @@ public class Vol {
 	public void removeReservation(Reservation reservation){
 		reservations.remove(reservation);
 	}
+
+
+	@Override
+	public String toString() {
+		return "Vol [id=" + id + "]";
+	}
+
+
+	
+	
+	
 	
 }

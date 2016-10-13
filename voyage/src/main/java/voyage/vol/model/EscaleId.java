@@ -74,5 +74,11 @@ public class EscaleId implements Serializable{
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "EscaleId [aeroport=" + aeroport + ", vol=" + vol + "]";
+	}
+
+	
 
 }
