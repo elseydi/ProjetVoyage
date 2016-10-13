@@ -24,7 +24,7 @@ import voyage.model.Reservation;
 @Entity
 public class Vol {
 	
-	private int id;
+	private Long id;
 	private Date dateDepart;
 	private Date dateArrivee;
 	private Date heureDepart;
@@ -42,12 +42,12 @@ public class Vol {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	
