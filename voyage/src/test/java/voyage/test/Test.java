@@ -282,11 +282,11 @@ public class Test {
 		// TEST FONCTIONS FIND &  GET
 		VolDao volDao = new VolDaoJpa();
 		Vol vol1 = volDao.find(922l);
-//		System.out.println("VOL ID:" + vol1.getId());
-		Set<Reservation> lres = new HashSet<Reservation>();
+		System.out.println(vol1);
+//		Set<Reservation> lres = new HashSet<Reservation>();
 		
-		for(Reservation r:lres)
-				System.out.println(r.getId());
+//		for(Reservation r:lres)
+//				System.out.println(r.getId());
 //		System.out.println(vol1.getEscales());
 //		System.out.println(vol1.getAeroportArrivee());
 		
