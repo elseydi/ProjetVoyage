@@ -25,7 +25,10 @@ public class VolDaoJpa implements VolDao{
 
 			tx.begin();
 
-			vol = em.find(Vol.class, id);
+			//vol = em.find(Vol.class, id);
+			Query query = em.createQuery("select distinct v from Vol v where v.id=:idVol");
+			query.setParameter("idVol", id);
+			vol = (Vol) query.getSingleResult();
 			
 			tx.commit();
 		} catch (Exception e) {
@@ -132,7 +135,7 @@ public class VolDaoJpa implements VolDao{
 
 			tx.begin();
 
-			em.remove(obj);
+			em.remove(em.merge(obj));
 			
 			tx.commit();
 		} catch (Exception e) {

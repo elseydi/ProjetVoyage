@@ -138,8 +138,7 @@ public class CompagnieAerienneVolDaoJpa implements CompagnieAerienneVolDao {
 
 			tx.begin();
 
-			em.remove(obj);
-			
+			em.remove(em.merge(obj));			
 			tx.commit();
 		} catch (Exception e) {
 			e.printStackTrace();

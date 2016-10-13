@@ -137,8 +137,8 @@ public class EscaleDaoJpa implements EscaleDao {
 
 			tx.begin();
 
-			em.remove(obj);
-
+			em.remove(em.merge(obj));
+			
 			tx.commit();
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -132,7 +132,7 @@ public class AeroportDaoJpa implements AeroportDao{
 
 			tx.begin();
 
-			em.remove(obj);
+			em.remove(em.merge(obj));
 			
 			tx.commit();
 		} catch (Exception e) {

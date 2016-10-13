@@ -138,7 +138,7 @@ public class AeroportVilleDaoJpa implements AeroportVilleDao {
 
 			tx.begin();
 
-			em.remove(obj);
+			em.remove(em.merge(obj));
 
 			tx.commit();
 		} catch (Exception e) {

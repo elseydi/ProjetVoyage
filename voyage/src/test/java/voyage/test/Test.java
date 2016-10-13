@@ -273,6 +273,25 @@ public class Test {
 		p1= passagerDao.find(p1.getId());
 		System.out.println(p1.getreservations());
 		
+		// TEST SUPPRESSION VOL
+		vol1=volDao.find(vol1.getId());
+		System.out.println(vol1.getId());
+		
+		for(Reservation r:vol1.getLreservations())
+			reservationDao.delete(r);
+		vol1.setLreservations(null);
+		
+		for(CompagnieAerienneVol cvol:vol1.getlCompagnieAerienneVols())
+			compagnieAerienneVolDao.delete(cvol);
+		vol1.setlCompagnieAerienneVols(null);
+		
+		for(Escale esc:vol1.getlEscales())
+			escaleDao.delete(esc);
+		
+		vol1.setlEscales(null);
+		
+		volDao.delete(vol1);
+		
 		Application.close();
 	}
 
