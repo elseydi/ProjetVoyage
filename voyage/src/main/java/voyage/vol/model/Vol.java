@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -34,7 +35,7 @@ public class Vol {
 	private Aeroport aeroportArrivee;
 	private List<Escale> escales = new ArrayList<Escale>();
 	private List<Reservation> reservations = new ArrayList<Reservation>();
-	
+	private List<CompagnieAerienneVol> compagniesAeriennes = new ArrayList<CompagnieAerienneVol>();
 	public Vol() {
 		super();
 	}
@@ -133,7 +134,7 @@ public class Vol {
 	}
 
 
-	@OneToMany (mappedBy = "id.vol") // IdClass
+	@OneToMany (fetch = FetchType.EAGER, mappedBy = "id.vol") // IdClass
 	// Embedded Id
 //	@JoinColumns({ @JoinColumn(referencedColumnName = "vol", name = "escale_vol"),
 //		@JoinColumn(referencedColumnName = "aeroport", name = "escale_aeroport") }) 
@@ -147,7 +148,7 @@ public class Vol {
 	}
 	
 	
-	@OneToMany(mappedBy = "vol")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "vol")
 	public List<Reservation> getReservations() {
 		return reservations;
 	}
@@ -157,6 +158,17 @@ public class Vol {
 		this.reservations = reservations;
 	}
 	
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="vol")
+	public List<CompagnieAerienneVol> getCompagniesAeriennes() {
+		return compagniesAeriennes;
+	}
+
+
+	public void setCompagniesAeriennes(List<CompagnieAerienneVol> compagniesAeriennes) {
+		this.compagniesAeriennes = compagniesAeriennes;
+	}
+
+
 	// -------- METHODES ------------
 	public void addEscale(Escale escale) {
 		this.escales.add(escale);
