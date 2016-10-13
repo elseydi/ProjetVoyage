@@ -129,7 +129,7 @@ public class LoginDaoJpa implements LoginDao {
 
 			tx.begin();
 
-			em.remove(obj);
+			em.remove(em.merge(obj));
 
 			tx.commit();
 		} catch (Exception e) {
