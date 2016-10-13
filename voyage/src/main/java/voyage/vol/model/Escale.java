@@ -73,6 +73,16 @@ public class Escale  {
 		this.heureArrivee = heureArrivee;
 	}
 
+
+
+	@Override
+	public String toString() {
+		return "Escale [id=" + id + ", version=" + version + ", heureDepart=" + heureDepart + ", heureArrivee="
+				+ heureArrivee + "]";
+	}
+
+	
+	
 	// Pour l'ID CLASS
 //	@Id
 //	@ManyToOne
