@@ -1,4 +1,5 @@
-package voyage.dao;
+package voyage.vol.dao;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,14 +8,15 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
+
 import voyage.Application;
-import voyage.model.Reservation;
+import voyage.vol.model.*;
 
-public class ReservationDaoJpa implements ReservationDao{
+public class VolDaoJpa implements VolDao{
 
 	@Override
-	public Reservation find(Long id) {
-		Reservation reservation = null;
+	public Vol find(Long id) {
+		Vol vol = null;
 		EntityManager em = null;
 		EntityTransaction tx = null;
 		try {
@@ -23,7 +25,10 @@ public class ReservationDaoJpa implements ReservationDao{
 
 			tx.begin();
 
-			reservation = em.find(Reservation.class, id);
+			//vol = em.find(Vol.class, id);
+			Query query = em.createQuery("select distinct v from Vol v where v.id=:idVol");
+			query.setParameter("idVol", id);
+			vol = (Vol) query.getSingleResult();
 			
 			tx.commit();
 		} catch (Exception e) {
@@ -36,12 +41,12 @@ public class ReservationDaoJpa implements ReservationDao{
 				em.close();
 			}
 		}
-		return reservation;
+		return vol;
 	}
 
 	@Override
-	public List<Reservation> findAll() {
-		List<Reservation> reservations = new ArrayList<Reservation>();
+	public List<Vol> findAll() {
+		List<Vol> vols = new ArrayList<Vol>();
 		EntityManager em = null;
 		EntityTransaction tx = null;
 		try {
@@ -50,8 +55,8 @@ public class ReservationDaoJpa implements ReservationDao{
 
 			tx.begin();
 
-			Query query = em.createQuery("select r from Reservation r");
-			reservations = query.getResultList();
+			Query query = em.createQuery("select v from Vol v");
+			vols = query.getResultList();
 			
 			tx.commit();
 		} catch (Exception e) {
@@ -64,11 +69,11 @@ public class ReservationDaoJpa implements ReservationDao{
 				em.close();
 			}
 		}
-		return reservations;
+		return vols;
 	}
 
 	@Override
-	public void create(Reservation obj) {
+	public void create(Vol obj) {
 		EntityManager em = null;
 		EntityTransaction tx = null;
 		try {
@@ -94,8 +99,8 @@ public class ReservationDaoJpa implements ReservationDao{
 	}
 
 	@Override
-	public Reservation update(Reservation obj) {
-		Reservation reservation = null;
+	public Vol update(Vol obj) {
+		Vol vol = null;
 		EntityManager em = null;
 		EntityTransaction tx = null;
 		try {
@@ -104,7 +109,7 @@ public class ReservationDaoJpa implements ReservationDao{
 
 			tx.begin();
 
-			reservation = em.merge(obj);
+			vol = em.merge(obj);
 			
 			tx.commit();
 		} catch (Exception e) {
@@ -117,11 +122,11 @@ public class ReservationDaoJpa implements ReservationDao{
 				em.close();
 			}
 		}
-		return reservation;
+		return vol;
 	}
 
 	@Override
-	public void delete(Reservation obj) {
+	public void delete(Vol obj) {
 		EntityManager em = null;
 		EntityTransaction tx = null;
 		try {
@@ -143,7 +148,8 @@ public class ReservationDaoJpa implements ReservationDao{
 				em.close();
 			}
 		}
-		
 	}
+
+	
 
 }

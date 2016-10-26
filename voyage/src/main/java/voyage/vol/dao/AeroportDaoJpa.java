@@ -1,4 +1,5 @@
-package voyage.dao;
+package voyage.vol.dao;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,14 +8,15 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
+
 import voyage.Application;
-import voyage.model.Reservation;
+import voyage.vol.model.*;
 
-public class ReservationDaoJpa implements ReservationDao{
+public class AeroportDaoJpa implements AeroportDao{
 
 	@Override
-	public Reservation find(Long id) {
-		Reservation reservation = null;
+	public Aeroport find(Long id) {
+		Aeroport aeroport = null;
 		EntityManager em = null;
 		EntityTransaction tx = null;
 		try {
@@ -23,7 +25,7 @@ public class ReservationDaoJpa implements ReservationDao{
 
 			tx.begin();
 
-			reservation = em.find(Reservation.class, id);
+			aeroport = em.find(Aeroport.class, id);
 			
 			tx.commit();
 		} catch (Exception e) {
@@ -36,12 +38,12 @@ public class ReservationDaoJpa implements ReservationDao{
 				em.close();
 			}
 		}
-		return reservation;
+		return aeroport;
 	}
 
 	@Override
-	public List<Reservation> findAll() {
-		List<Reservation> reservations = new ArrayList<Reservation>();
+	public List<Aeroport> findAll() {
+		List<Aeroport> aeroports = new ArrayList<Aeroport>();
 		EntityManager em = null;
 		EntityTransaction tx = null;
 		try {
@@ -50,8 +52,8 @@ public class ReservationDaoJpa implements ReservationDao{
 
 			tx.begin();
 
-			Query query = em.createQuery("select r from Reservation r");
-			reservations = query.getResultList();
+			Query query = em.createQuery("select a from Aeroport a");
+			aeroports = query.getResultList();
 			
 			tx.commit();
 		} catch (Exception e) {
@@ -64,11 +66,11 @@ public class ReservationDaoJpa implements ReservationDao{
 				em.close();
 			}
 		}
-		return reservations;
+		return aeroports;
 	}
 
 	@Override
-	public void create(Reservation obj) {
+	public void create(Aeroport obj) {
 		EntityManager em = null;
 		EntityTransaction tx = null;
 		try {
@@ -94,8 +96,8 @@ public class ReservationDaoJpa implements ReservationDao{
 	}
 
 	@Override
-	public Reservation update(Reservation obj) {
-		Reservation reservation = null;
+	public Aeroport update(Aeroport obj) {
+		Aeroport aeroport = null;
 		EntityManager em = null;
 		EntityTransaction tx = null;
 		try {
@@ -104,7 +106,7 @@ public class ReservationDaoJpa implements ReservationDao{
 
 			tx.begin();
 
-			reservation = em.merge(obj);
+			aeroport = em.merge(obj);
 			
 			tx.commit();
 		} catch (Exception e) {
@@ -117,11 +119,11 @@ public class ReservationDaoJpa implements ReservationDao{
 				em.close();
 			}
 		}
-		return reservation;
+		return aeroport;
 	}
 
 	@Override
-	public void delete(Reservation obj) {
+	public void delete(Aeroport obj) {
 		EntityManager em = null;
 		EntityTransaction tx = null;
 		try {
@@ -143,7 +145,35 @@ public class ReservationDaoJpa implements ReservationDao{
 				em.close();
 			}
 		}
-		
+	}
+
+	@Override
+	public List<Aeroport> findAllByName(String name) {
+		List<Aeroport> aeroports = new ArrayList<Aeroport>();
+		EntityManager em = null;
+		EntityTransaction tx = null;
+		try {
+			em = Application.getInstance().getEmf().createEntityManager();
+			tx = em.getTransaction();
+
+			tx.begin();
+
+			Query query = em.createQuery("select a from Aeroport a where c.nomAeroport = :monNomAeroport");
+			query.setParameter("monNomAeroport", name);
+			aeroports = query.getResultList();
+			
+			tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			if (tx != null) {
+				tx.rollback();
+			}
+		} finally {
+			if (em != null) {
+				em.close();
+			}
+		}
+		return aeroports;
 	}
 
 }

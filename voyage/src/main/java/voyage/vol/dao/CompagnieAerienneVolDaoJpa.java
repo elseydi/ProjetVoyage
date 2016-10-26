@@ -1,20 +1,48 @@
-package voyage.dao;
-
+package voyage.vol.dao;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
-
 import voyage.Application;
-import voyage.model.Reservation;
+import voyage.vol.model.CompagnieAerienneVol;
+import voyage.vol.model.CompagnieAerienneVolId;
+import voyage.vol.model.Vol;
 
-public class ReservationDaoJpa implements ReservationDao{
-
+public class CompagnieAerienneVolDaoJpa implements CompagnieAerienneVolDao {
+	
 	@Override
-	public Reservation find(Long id) {
-		Reservation reservation = null;
+	public CompagnieAerienneVol find(CompagnieAerienneVolId id){
+		
+		CompagnieAerienneVol compagnieAerienneVol=null;
+		EntityManager em=null;
+		EntityTransaction tx=null;
+		try{
+			em = Application.getInstance().getEmf().createEntityManager();
+			tx = em.getTransaction();
+
+			tx.begin();
+			compagnieAerienneVol = em.find(CompagnieAerienneVol.class, id);
+			
+			
+			tx.commit();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			if (tx != null) {
+				tx.rollback();
+			}
+		} finally {
+			if (em != null) {
+				em.close();
+			}
+		}
+		return  compagnieAerienneVol;
+	}
+	
+	@Override
+	public List<CompagnieAerienneVol> findAll() {
+		List<CompagnieAerienneVol> compagnieAerienneVols = new ArrayList<CompagnieAerienneVol>();
 		EntityManager em = null;
 		EntityTransaction tx = null;
 		try {
@@ -23,7 +51,8 @@ public class ReservationDaoJpa implements ReservationDao{
 
 			tx.begin();
 
-			reservation = em.find(Reservation.class, id);
+			Query query = em.createQuery("select ca from CompagnieAerienneVol ca");
+			compagnieAerienneVols = query.getResultList();
 			
 			tx.commit();
 		} catch (Exception e) {
@@ -36,50 +65,29 @@ public class ReservationDaoJpa implements ReservationDao{
 				em.close();
 			}
 		}
-		return reservation;
+		return compagnieAerienneVols;
 	}
-
+	
 	@Override
-	public List<Reservation> findAll() {
-		List<Reservation> reservations = new ArrayList<Reservation>();
-		EntityManager em = null;
-		EntityTransaction tx = null;
-		try {
-			em = Application.getInstance().getEmf().createEntityManager();
-			tx = em.getTransaction();
+		public void create(CompagnieAerienneVol obj) {
+				CompagnieAerienneVol compagnieAerienneVol = null;
+				EntityManager em = null;
+				EntityTransaction tx = null;
+				try {
+					em = Application.getInstance().getEmf().createEntityManager();
+					tx = em.getTransaction();
 
-			tx.begin();
-
-			Query query = em.createQuery("select r from Reservation r");
-			reservations = query.getResultList();
+					tx.begin();
 			
-			tx.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			if (tx != null) {
-				tx.rollback();
-			}
-		} finally {
-			if (em != null) {
-				em.close();
-			}
-		}
-		return reservations;
-	}
-
-	@Override
-	public void create(Reservation obj) {
-		EntityManager em = null;
-		EntityTransaction tx = null;
-		try {
-			em = Application.getInstance().getEmf().createEntityManager();
-			tx = em.getTransaction();
-
-			tx.begin();
-
+			Vol vol = em.merge(obj.getVol());
+			obj.setVol(vol);
+			obj.setCompagnieAerienne(em.merge(obj.getCompagnieAerienne()));
+			
+			
 			em.persist(obj);
 			
 			tx.commit();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			if (tx != null) {
@@ -91,11 +99,11 @@ public class ReservationDaoJpa implements ReservationDao{
 			}
 		}
 		
-	}
+			}
 
 	@Override
-	public Reservation update(Reservation obj) {
-		Reservation reservation = null;
+	public CompagnieAerienneVol update(CompagnieAerienneVol obj) {
+		CompagnieAerienneVol compagnieAerienneVol = null;
 		EntityManager em = null;
 		EntityTransaction tx = null;
 		try {
@@ -104,7 +112,7 @@ public class ReservationDaoJpa implements ReservationDao{
 
 			tx.begin();
 
-			reservation = em.merge(obj);
+			compagnieAerienneVol = em.merge(obj);
 			
 			tx.commit();
 		} catch (Exception e) {
@@ -117,11 +125,11 @@ public class ReservationDaoJpa implements ReservationDao{
 				em.close();
 			}
 		}
-		return reservation;
+		return compagnieAerienneVol;
 	}
 
 	@Override
-	public void delete(Reservation obj) {
+	public void delete(CompagnieAerienneVol obj) {
 		EntityManager em = null;
 		EntityTransaction tx = null;
 		try {
@@ -130,8 +138,7 @@ public class ReservationDaoJpa implements ReservationDao{
 
 			tx.begin();
 
-			em.remove(em.merge(obj));
-			
+			em.remove(em.merge(obj));			
 			tx.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -143,7 +150,7 @@ public class ReservationDaoJpa implements ReservationDao{
 				em.close();
 			}
 		}
-		
+		}
 	}
 
-}
+
