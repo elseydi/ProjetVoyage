@@ -1,5 +1,9 @@
 package voyage.vol.dao;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> fce536c217eef67091b2c7025b3def78c1b5ad72
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,10 +11,18 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
+<<<<<<< HEAD
 import voyage.Application;
 import voyage.vol.model.CompagnieAerienne;
 
 public class CompagnieAerienneDaoJpa implements CompagnieAerienneDao {
+=======
+
+import voyage.Application;
+import voyage.vol.model.*;
+
+public class CompagnieAerienneDaoJpa implements CompagnieAerienneDao{
+>>>>>>> fce536c217eef67091b2c7025b3def78c1b5ad72
 
 	@Override
 	public CompagnieAerienne find(Long id) {
@@ -24,7 +36,11 @@ public class CompagnieAerienneDaoJpa implements CompagnieAerienneDao {
 			tx.begin();
 
 			compagnieAerienne = em.find(CompagnieAerienne.class, id);
+<<<<<<< HEAD
 
+=======
+			
+>>>>>>> fce536c217eef67091b2c7025b3def78c1b5ad72
 			tx.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -50,9 +66,15 @@ public class CompagnieAerienneDaoJpa implements CompagnieAerienneDao {
 
 			tx.begin();
 
+<<<<<<< HEAD
 			Query query = em.createQuery("select c from CompagnieAerienne c");
 			compagnieAeriennes = query.getResultList();
 
+=======
+			Query query = em.createQuery("select ca from CompagnieAerienne ca");
+			compagnieAeriennes = query.getResultList();
+			
+>>>>>>> fce536c217eef67091b2c7025b3def78c1b5ad72
 			tx.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -78,7 +100,11 @@ public class CompagnieAerienneDaoJpa implements CompagnieAerienneDao {
 			tx.begin();
 
 			em.persist(obj);
+<<<<<<< HEAD
 
+=======
+			
+>>>>>>> fce536c217eef67091b2c7025b3def78c1b5ad72
 			tx.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -90,6 +116,10 @@ public class CompagnieAerienneDaoJpa implements CompagnieAerienneDao {
 				em.close();
 			}
 		}
+<<<<<<< HEAD
+=======
+		
+>>>>>>> fce536c217eef67091b2c7025b3def78c1b5ad72
 	}
 
 	@Override
@@ -104,7 +134,11 @@ public class CompagnieAerienneDaoJpa implements CompagnieAerienneDao {
 			tx.begin();
 
 			compagnieAerienne = em.merge(obj);
+<<<<<<< HEAD
 
+=======
+			
+>>>>>>> fce536c217eef67091b2c7025b3def78c1b5ad72
 			tx.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -129,8 +163,12 @@ public class CompagnieAerienneDaoJpa implements CompagnieAerienneDao {
 
 			tx.begin();
 
+<<<<<<< HEAD
 			em.remove(obj);
 
+=======
+			em.remove(em.merge(obj));
+			
 			tx.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -144,4 +182,41 @@ public class CompagnieAerienneDaoJpa implements CompagnieAerienneDao {
 		}
 	}
 
+	@Override
+	public List<CompagnieAerienne> findAllByName(String name) {
+		List<CompagnieAerienne> compagnieAeriennes = new ArrayList<CompagnieAerienne>();
+		EntityManager em = null;
+		EntityTransaction tx = null;
+		try {
+			em = Application.getInstance().getEmf().createEntityManager();
+			tx = em.getTransaction();
+
+			tx.begin();
+
+			Query query = em.createQuery("select ca from CompagnieAerienne ca where ca.nom = :monNomCompagnieAerienne");
+			query.setParameter("monNomCompagnieAerienne", name);
+			compagnieAeriennes = query.getResultList();
+			
+>>>>>>> fce536c217eef67091b2c7025b3def78c1b5ad72
+			tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			if (tx != null) {
+				tx.rollback();
+			}
+		} finally {
+			if (em != null) {
+				em.close();
+			}
+		}
+<<<<<<< HEAD
+	}
+
+=======
+		return compagnieAeriennes;
+	}
+
+
+
+>>>>>>> fce536c217eef67091b2c7025b3def78c1b5ad72
 }

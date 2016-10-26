@@ -53,7 +53,7 @@ public abstract class Client {
 		this.version = version;
 	}
 
-	@Column(length=50)
+	@Column(length=50, nullable=false)
 	public String getNom() {
 		return nom;
 	}
@@ -62,7 +62,7 @@ public abstract class Client {
 		this.nom = nom;
 	}
 
-	@Column(length=20)
+	@Column(name="numero_tel", length=20)
 	public String getNumeroTel() {
 		return numeroTel;
 	}
@@ -71,7 +71,7 @@ public abstract class Client {
 		this.numeroTel = numeroTel;
 	}
 
-	@Column(length=20)
+	@Column(name="numero_fax", length=20)
 	public String getNumeroFax() {
 		return numeroFax;
 	}
@@ -80,7 +80,7 @@ public abstract class Client {
 		this.numeroFax = numeroFax;
 	}
 
-	@Column(length=100)
+	@Column(length=100, nullable=false)
 	public String getEmail() {
 		return email;
 	}
@@ -98,7 +98,7 @@ public abstract class Client {
 	}
 
 	@OneToOne
-	@JoinColumn(name="LoginId", nullable=true)
+	@JoinColumn(name="Login_id", nullable=true)
 	public Login getLogin() {
 		return login;
 	}
@@ -107,7 +107,7 @@ public abstract class Client {
 		this.login = login;
 	}
 
-	@OneToMany(mappedBy="client")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="client")
 	public List<Reservation> getReservations() {
 		return reservations;
 	}

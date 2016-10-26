@@ -46,7 +46,7 @@ public class Login {
 		this.version = version;
 	}
 
-	@Column(length=50, nullable=false)
+	@Column(length=50, nullable=false, unique=true)
 	public String getLogin() {
 		return login;
 	}
@@ -57,7 +57,7 @@ public class Login {
 	}
 
 
-	@Column(length=50, nullable=false)
+	@Column(name="mot_de_passe", length=50, nullable=false)
 	public String getMotDePasse() {
 		return motDePasse;
 	}

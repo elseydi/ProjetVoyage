@@ -19,14 +19,13 @@ public class Passager {
 	private String nom;
 	private String prenom;
 	private Adresse adresse;
-	private List<Reservation> lReservations;
+	private List<Reservation> reservations;
 	private int version;
 	
 	
 	
 	public Passager() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Passager(String nom, String prenom) {
@@ -45,7 +44,7 @@ public class Passager {
 		this.id = id;
 	}
 
-	@Column(length=50)
+	@Column(length=50, nullable=false)
 	public String getNom() {
 		return nom;
 	}
@@ -54,7 +53,7 @@ public class Passager {
 		this.nom = nom;
 	}
 
-	@Column(length=50)
+	@Column(length=50, nullable=false)
 	public String getPrenom() {
 		return prenom;
 	}
@@ -73,14 +72,15 @@ public class Passager {
 	}
 
 	@OneToMany(fetch = FetchType.EAGER, mappedBy="passager")
-	public List<Reservation> getlReservations() {
-		return lReservations;
+	public List<Reservation> getreservations() {
+		return reservations;
 	}
 
-	public void setlReservations(List<Reservation> lReservations) {
-		this.lReservations = lReservations;
+	public void setreservations(List<Reservation> reservations) {
+		this.reservations = reservations;
 	}
 
+	@Column(nullable=false)
 	public Adresse getAdresse() {
 		return adresse;
 	}
@@ -89,9 +89,13 @@ public class Passager {
 		this.adresse = adresse;
 	}
 
+	// ------ METHODES --------
+	public void addReservation(Reservation reservation){
+		reservations.add(reservation);
+	}
 	
-	
-	
-	
+	public void removeReservation(Reservation reservation){
+		reservations.remove(reservation);
+	}
 
 }

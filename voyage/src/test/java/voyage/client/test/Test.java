@@ -44,7 +44,7 @@ public class Test {
 		passagerDao.create(p2);
 		passagerDao.create(p3);
 		
-		p1.setAdresse(new Adresse("1 rue de la paix", "75001", "Paris", "France"));
+		p1.setAdresse(new Adresse("1 rue de la paix", "75004", "Paris", "France"));
 		p2.setAdresse(new Adresse("1 place de la bourse", "75002", "Paris", "France"));
 		p3.setAdresse(new Adresse("1 deux trois soleil", "94000", "Créteil", "France"));
 

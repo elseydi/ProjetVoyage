@@ -7,13 +7,25 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
+<<<<<<< HEAD
 import voyage.Application;
 import voyage.vol.model.Escale;
+=======
+
+import voyage.Application;
+
+import voyage.vol.model.Escale;
+import voyage.vol.model.EscaleId;
+>>>>>>> fce536c217eef67091b2c7025b3def78c1b5ad72
 
 public class EscaleDaoJpa implements EscaleDao {
 
 	@Override
+<<<<<<< HEAD
 	public Escale find(Long id) {
+=======
+	public Escale find(EscaleId id) {
+>>>>>>> fce536c217eef67091b2c7025b3def78c1b5ad72
 		Escale escale = null;
 		EntityManager em = null;
 		EntityTransaction tx = null;
@@ -50,9 +62,15 @@ public class EscaleDaoJpa implements EscaleDao {
 
 			tx.begin();
 
+<<<<<<< HEAD
 			Query query = em.createQuery("select c from Escale c");
 			escales = query.getResultList();
 
+=======
+			Query query = em.createQuery("select e from Escale e");
+			escales = query.getResultList();
+			
+>>>>>>> fce536c217eef67091b2c7025b3def78c1b5ad72
 			tx.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -77,6 +95,13 @@ public class EscaleDaoJpa implements EscaleDao {
 
 			tx.begin();
 
+<<<<<<< HEAD
+=======
+			// IdClass
+//			obj.setVol(em.merge(obj.getVol()));
+//			obj.setAeroport(em.merge(obj.getAeroport()));
+			
+>>>>>>> fce536c217eef67091b2c7025b3def78c1b5ad72
 			em.persist(obj);
 
 			tx.commit();
@@ -90,6 +115,10 @@ public class EscaleDaoJpa implements EscaleDao {
 				em.close();
 			}
 		}
+<<<<<<< HEAD
+=======
+		
+>>>>>>> fce536c217eef67091b2c7025b3def78c1b5ad72
 	}
 
 	@Override
@@ -129,8 +158,13 @@ public class EscaleDaoJpa implements EscaleDao {
 
 			tx.begin();
 
+<<<<<<< HEAD
 			em.remove(obj);
 
+=======
+			em.remove(em.merge(obj));
+			
+>>>>>>> fce536c217eef67091b2c7025b3def78c1b5ad72
 			tx.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -143,5 +177,10 @@ public class EscaleDaoJpa implements EscaleDao {
 			}
 		}
 	}
+<<<<<<< HEAD
+=======
+		
+	
+>>>>>>> fce536c217eef67091b2c7025b3def78c1b5ad72
 
 }
